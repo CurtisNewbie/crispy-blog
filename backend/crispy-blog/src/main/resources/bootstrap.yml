@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: crispy-blog
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true # for feign
+
+# base url for rest endpoints
+web:
+  base-path: "/api/"
+
+# config for mybatis
+mybatis:
+  config-location: classpath:mybatis-config.xml
+mybatis-plus:
+  typeEnumsPackage: com.curtisnewbie.common.dao;com.curtisnewbie.service.auth.remote.consts
+
+# distributed-task-module
+distributed-task-module:
+  application-group: crispy-blog
+
+# auth-module
+authmodule:
+  permittedAntPatterns:
+    - "/"
+    - "/api/login"
+    - "/api/logout"
+    - "/api/user/info"
+    - "/api/user/register/request"
+    - "/**/*.js"
+    - "/**/*.css"
+    - "/favicon.ico"
+  loginProcessingUrl: "/api/login"
+  customLoginPage: "/"
+  logoutUrl: "/api/logout"
+  enableAccessLog: true
+  enableOperateLog: true
+  permitAdminLoginOnly: true
+  appAuthorizationChecked: true
+  enableControllerConsoleLog: false
+  cors:
+    isFilterEnabled: false
+    allowOrigin: "*"
+    allowMethods: "GET,PUT,POST,DELETE,OPTION"
+    allowCredential: true
+    allowHeaders: "content-type, x-gwt-module-base, x-gwt-permutation, clientid, longpush, set-cookie"
+
+jwt-module:
+  issuer: yongj.zhuang-auth-service

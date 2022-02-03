@@ -13,13 +13,63 @@
   <groupId>com.curtisnewbie</groupId>
   <artifactId>crispy-blog</artifactId>
   <name>crispy-blog</name>
-  <description></description>
+  <description>Crispy Blog Service</description>
 
   <properties>
     <java.version>8</java.version>
+    <auth-module.version>2.0.7-SNAPSHOT</auth-module.version>
+    <common-module.version>2.0.8-SNAPSHOT</common-module.version>
+    <log-tracing-module.version>2.0.2-SNAPSHOT</log-tracing-module.version>
+    <redis-util-module.version>2.0.2-SNAPSHOT</redis-util-module.version>
+    <distributed-task-module.version>2.0.5-SNAPSHOT</distributed-task-module.version>
+    <messaging-module.version>2.0.3-SNAPSHOT</messaging-module.version>
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>com.curtisnewbie</groupId>
+      <artifactId>auth-module</artifactId>
+      <version>${auth-module.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.curtisnewbie</groupId>
+          <artifactId>common-module</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.curtisnewbie</groupId>
+      <artifactId>auth-module-web</artifactId>
+      <version>${auth-module.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.session</groupId>
+      <artifactId>spring-session-data-redis</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.curtisnewbie</groupId>
+      <artifactId>common-module</artifactId>
+      <version>${common-module.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
@@ -29,6 +79,65 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.curtisnewbie</groupId>
+      <artifactId>log-tracing-module</artifactId>
+      <version>${log-tracing-module.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.curtisnewbie</groupId>
+      <artifactId>messaging-module</artifactId>
+      <version>${messaging-module.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.curtisnewbie</groupId>
+          <artifactId>common-module</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>com.curtisnewbie</groupId>
+      <artifactId>distributed-task-module</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.mybatis.spring.boot</groupId>
+          <artifactId>mybatis-spring-boot-starter</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.curtisnewbie</groupId>
+          <artifactId>common-module</artifactId>
+        </exclusion>
+      </exclusions>
+      <version>${distributed-task-module.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
     </dependency>
   </dependencies>
 
